@@ -769,13 +769,13 @@ class HTMLTestRunner(Template_mixin):
         if isinstance(e,str):
             # TODO: some problem with 'string_escape': it escape \n and mess up formating
             # ue = unicode(e.encode('string_escape'))
-            ue = o
+            ue = e
         else:
             ue = e.decode('utf-8')
 
         script = self.REPORT_TEST_OUTPUT_TMPL % dict(
             id = tid,
-            output = saxutils.escape(uo+ue),
+            output = saxutils.escape(str(uo)+ue),
         )
 
         row = tmpl % dict(
